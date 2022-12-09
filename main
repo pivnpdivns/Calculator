@@ -1,0 +1,121 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <random>
+#include <string>
+
+
+double x;
+double y;
+double z;
+
+class calculator {
+public:
+    void add() {
+        std::cout << "What is the first number? \n";
+        std::cin >> x;
+        std::cout << "What is the second number? \n";
+        std::cin >> y;
+        std::cout << "What is the third number? \n";
+        std::cin >> z;
+        std::cout << "The answer is: " << x + y + z << "\n \n";
+    }
+    void subtract() {
+        std::cout << "What is the first number? \n";
+        std::cin >> x;
+        std::cout << "What is the second number? \n";
+        std::cin >> y;
+        std::cout << "What is the third number? \n";
+        std::cin >> z;
+        std::cout << "The answer is: " << x - y - z << "\n \n";
+    }
+    void solveAdditionEquation() {
+        std::cout << "What is the equation? \n";
+        std::cin >> x;
+        std::cin >> y;
+        std::cin >> z;
+        std::cout << "The answer is: " << x + y + z << "\n \n";
+    }
+    void solveSubtractionEquation() {
+        std::cout << "What is the equation? \n";
+        std::cin >> x;
+        std::cin >> y;
+        std::cin >> z;
+        std::cout << "The answer is: " << x - y - z << "\n \n";
+    }
+    void solveMultiplicationEquation() {
+        std::cout << "What is the equation? \n";
+        std::cin >> x;
+        std::cin >> y;
+        std::cin >> z;
+        std::cout << "The answer is: " << x * y * z << "\n \n";
+    }
+    void solveDivisionEquation() {
+        std::cout << "What is the equation? \n";
+        std::cin >> x;
+        std::cin >> y;
+        std::cin >> z;
+        std::cout << "The answer is: " << x / y / z << "\n \n";
+    }
+};
+
+class numberGenerator {
+public:
+    void generator() {
+        int x;
+        srand(time(0));
+        std::cout << "How many numbers would you like generated? \n \n";
+        std::cin >> x;
+        std::cout << "Generating... \n \n";
+        for (int i = 0; i < x; i++) {
+            int random = 0 + (rand() % 100);
+            std::cout << i+1 << ". " << random << "\n";
+        }
+        std::cout << "\n";
+        
+    }
+};
+
+class userInput : public numberGenerator, public calculator {
+public:
+    void greeting() {
+        std::cout << "Hello. I am your personal 3 digit equation solver. \n \n";
+    }
+    void question() {
+        std::string input;
+        
+        std::cout << "What would you like to do? \n \n";
+        std::cin >> input;
+        if (input.find("Addition") != std::string::npos) {
+            std::cout << "Now solving addition... \n \n";
+            return solveAdditionEquation();
+        }
+        if (input.find("Subtraction") != std::string::npos) {
+            std::cout << "Now solving Subtraction... \n \n";
+            return solveSubtractionEquation();
+        }
+        if (input.find("Multiplication") != std::string::npos) {
+            std::cout << "Now solving Mupltiplication... \n \n";
+            return solveMultiplicationEquation();
+        }
+        if (input.find("Division") != std::string::npos) {
+            std::cout << "Now solving Division... \n \n";
+            return solveDivisionEquation();
+        }
+        if (input.find("Generate") != std::string::npos) {
+            std::cout << "Creating Generator... \n \n";
+            return generator();
+        }
+    }
+};
+
+
+int main()
+{
+    userInput myObj;
+    myObj.greeting();
+    myObj.question();
+    myObj.question();
+    
+    
+}
